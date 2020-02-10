@@ -7,10 +7,10 @@
         <title>Canvas Js</title>
 
         <!-- external ressources -->
-        <link rel="stylesheet" href="https://use.typekit.net/fsx3yvj.css">
+        <link rel="stylesheet" href="https://use.typekit.net/fsx3yvj.css"/>
 
         <!-- styles -->
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css"/>
     </head>
 
     <body>
@@ -100,7 +100,7 @@
 
                 </div>
 
-                <a id="export" class="button" href="##">Exporter</p>
+                <a id="export" class="button" href="##">Exporter</a>
             </div>
 
         </main>
