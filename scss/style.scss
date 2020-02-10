@@ -1,0 +1,236 @@
+/*
+ * Settings
+ */
+
+// Couleurs
+$c-1 : #E7F0EF; // gris
+$c-2 : #0E3B36; // vert
+$c-3 : #EEC90F; // jaune
+$c-white : #FCFCFC; // blanc
+$c-black : #2A2626; // noir
+
+// marges & items
+$m : 40px;
+$br : 6px; // border radius
+$bs : 2px 2px 20px 2px rgba($c-black, 0.1); // box shadow
+
+// fonts
+@mixin font($weight, $size:20px)
+{
+    font-family: upgrade, sans-serif;
+    font-style: normal;
+    font-size: $size;
+    @if $weight == r { font-weight: 300; }
+    @if $weight == m { font-weight: 400; }
+    @if $weight == b { font-weight: 600; }
+}
+
+/*
+ * Init
+ */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    body, html
+    {
+        width: 100%;
+        height: 100%;
+        padding: 0 $m;
+        @include font(m, 12px);
+    }
+}
+
+/*
+ * Style
+ */
+header
+{
+
+    h1
+    {
+        width: calc(100% - (3 * 100% / 10));
+        @include font(b, 50px);
+        color: $c-2;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 200px;
+    }
+}
+
+main
+{
+    display: flex;
+    flex-direction: row;
+}
+
+
+#canvas
+{
+    background-color: #E7F0EF;
+    border-radius: $br;
+}
+
+.panel
+{
+    position: relative;
+    margin-left: 40px;
+
+    .label
+    {
+        text-align: center;
+        @include font(m, 30px);
+        margin-bottom: 20px;
+        color: $c-2;
+    }
+
+    .input
+    {
+        position: relative;
+        height: 50px;
+
+        &:hover
+        {
+            p.button-round
+            {
+                background: $c-3;
+
+                &:after, &:before
+                {
+                    background: $c-white;
+                }
+            }
+        }
+
+        input[type='file']
+        {
+            opacity: 0;
+            width: 100%;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        p
+        {
+            text-align: center;
+
+            &.button-round
+            {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: $c-1;
+                color: $c-2;
+                @include font(b, 30px);
+                transition: 0.25s ease;
+                pointer-events: none;
+
+                &:before, &:after
+                {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    background: $c-2;
+                    transition: 0.25s ease;
+                }
+
+                &:before
+                {
+                    width: 4px;
+                    height: 20px;
+                }
+
+                &:after
+                {
+                    height: 4px;
+                    width: 20px;
+                }
+            }
+        }
+    }
+
+    p
+    {
+        text-align: center;
+    }
+
+    .filtre
+    {
+        &List
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-height: 500px;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar
+            {
+              display: none;
+            }
+        }
+
+        &Item
+        {
+            width: calc(50% - 40px);
+            padding: 10px;
+            margin: 20px;
+            background: $c-1;
+            text-align: center;
+            @include font(r, 16px);
+            border-radius: $br;
+            cursor: pointer;
+            transition: 0.25s ease;
+            &:nth-child(even)
+            {
+                margin-right: 0;
+            }
+            &:nth-child(odd)
+            {
+                margin-left: 0;
+            }
+
+            &.active
+            {
+                background: $c-3;
+                color: $c-white;
+            }
+
+            input
+            {
+                width: 100%;
+            }
+        }
+    }
+
+    .button
+    {
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - 40px);
+        left: 20px;
+        @include font(m, 20px);
+        line-height: 40px;
+        text-align: center;
+        text-decoration: none;
+        color: $c-white;
+        background: $c-2;
+        border-radius: $br;
+        cursor: pointer;
+        transition: 0.25s ease;
+
+        &:hover
+        {
+            background: $c-3;
+        }
+    }
+}
