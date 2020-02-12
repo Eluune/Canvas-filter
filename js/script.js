@@ -180,6 +180,7 @@ function loadCanvasWithInputFile(){
                 ctx.filter = filtresToString(filtre);
                 ctx.fillStyle = "#E7F0EF";
                 ctx.rect(0, 0, canvas.width, canvas.height);
+                console.log(ctx.filter);
                 ctx.fill();
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             }
